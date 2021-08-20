@@ -1,0 +1,7 @@
+project_name                                    = "nap-waf"
+project_region                                  = "ap-southeast-2"
+base_ami                                        = "ami-0aab712d6363da7f9" # ap-southeast-2 AWS Linux 2
+secrets_manager_nginx_plus_repo_certificate_arn = "arn:aws:secretsmanager:ap-southeast-2:058666485303:secret:nplus-cert-pK7ecP"
+secrets_manager_nginx_plus_repo_key_arn         = "arn:aws:secretsmanager:ap-southeast-2:058666485303:secret:nplus-key-rt9lo5"
+nginx_conf_repo_url                             = "https://github.com/leonseng/nginx-app-protect-demo.git"
+nginx_conf_relative_path                        = "files/nginx.conf"
