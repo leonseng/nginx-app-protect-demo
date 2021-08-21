@@ -7,10 +7,8 @@ sudo wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nginx-plus-7.rep
 # load Nginx Plus certificates
 sudo mkdir -p /etc/ssl/nginx
 sudo sh -c '\
-  REPO_CRT_REGION=$(echo "${nplus_repo_crt}" | cut -d ":" -f 4); \
-  aws --region $REPO_CRT_REGION secretsmanager get-secret-value --secret-id ${nplus_repo_crt} --query SecretString --output text > /etc/ssl/nginx/nginx-repo.crt; \
-  REPO_KEY_REGION=$(echo "${nplus_repo_key}" | cut -d ":" -f 4); \
-  aws --region $REPO_KEY_REGION secretsmanager get-secret-value --secret-id ${nplus_repo_key} --query SecretString --output text > /etc/ssl/nginx/nginx-repo.key; \
+  aws --region ${region} secretsmanager get-secret-value --secret-id ${nplus_repo_crt} --query SecretString --output text > /etc/ssl/nginx/nginx-repo.crt; \
+  aws --region ${region} secretsmanager get-secret-value --secret-id ${nplus_repo_key} --query SecretString --output text > /etc/ssl/nginx/nginx-repo.key; \
 '
 
 sudo yum install -y app-protect

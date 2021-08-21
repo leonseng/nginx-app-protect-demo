@@ -9,8 +9,8 @@ resource "aws_iam_policy" "nplus_sm_ro_policy" {
   name        = "nplus-sm-ro-policy"
   description = "Allow read only access to secrets in Secrets Manager"
   policy = templatefile("files/policies/nplus-secretsmanager-ro-policy.tpl", {
-    nginx_plus_repo_cert = var.secrets_manager_nginx_plus_repo_certificate_arn
-    nginx_plus_repo_key  = var.secrets_manager_nginx_plus_repo_key_arn
+    nginx_plus_repo_cert = aws_secretsmanager_secret.nplus_cert.id
+    nginx_plus_repo_key  = aws_secretsmanager_secret.nplus_key.id
   })
 }
 

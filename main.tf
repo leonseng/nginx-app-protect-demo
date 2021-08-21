@@ -83,8 +83,9 @@ resource "aws_instance" "nplus" {
   ]
 
   user_data = templatefile("files/run.sh.tpl", {
-    nplus_repo_crt      = var.secrets_manager_nginx_plus_repo_certificate_arn
-    nplus_repo_key      = var.secrets_manager_nginx_plus_repo_key_arn
+    region              = var.project_region
+    nplus_repo_crt      = aws_secretsmanager_secret.nplus_cert.id
+    nplus_repo_key      = aws_secretsmanager_secret.nplus_key.id
     nginx_conf_repo_url = var.nginx_conf_repo_url
     nginx_conf_rel_path = var.nginx_conf_relative_path
   })
@@ -92,6 +93,11 @@ resource "aws_instance" "nplus" {
   tags = {
     Name = "${var.project_name}-instance"
   }
+
+  depends_on = [
+    aws_secretsmanager_secret_version.nplus_cert_value,
+    aws_secretsmanager_secret_version.nplus_key_value
+  ]
 }
 
 resource "aws_eip" "nplus_eip" {

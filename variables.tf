@@ -13,18 +13,17 @@ variable "base_ami" {
   description = "AWS machine image ID"
 }
 
-
 #
 # NGINX Plus Repository SSL files
 #
-variable "secrets_manager_nginx_plus_repo_certificate_arn" {
+variable "nginx_plus_repo_cert_path" {
   type        = string
-  description = "ARN of NGINX Plus repository certificate secret on AWS Secrets Manager"
+  description = "File path of NGINX Plus repository certificate nginx-repo.crt"
 }
 
-variable "secrets_manager_nginx_plus_repo_key_arn" {
+variable "nginx_plus_repo_key_path" {
   type        = string
-  description = "ARN of NGINX Plus repository key secret on AWS Secrets Manager"
+  description = "File path of NGINX Plus repository key nginx-repo.key"
 }
 
 #
