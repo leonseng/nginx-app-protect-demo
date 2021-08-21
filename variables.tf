@@ -36,5 +36,5 @@ variable "nginx_conf_repo_url" {
 
 variable "nginx_conf_relative_path" {
   type        = string
-  description = "Relative path of nginx.conf within cloned Git repository"
+  description = "Relative path of directory containing NGINX configuration files and App Protect policies within cloned Git repository"
 }

@@ -5,7 +5,7 @@ This repository contains Terraform files to deploy an NGINX Plus server running 
 The deployment requires the following files to be available:
 
 1. NGINX Plus subscription files `nginx-repo.key` and `nginx-repo.crt`
-1. `nginx.conf` on a public Git repository
+1. `nginx.conf` and App Protect policies in a directory hosted on a public Git repository. See [example](files/nginx/).
 
 ## Instructions
 

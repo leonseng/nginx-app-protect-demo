@@ -16,6 +16,6 @@ sudo nginx -v
 
 # load nginx.conf from remote source
 sudo git clone ${nginx_conf_repo_url} .nginx-conf-repo
-sudo cp .nginx-conf-repo/${nginx_conf_rel_path} /etc/nginx/nginx.conf
+sudo cp -r .nginx-conf-repo/${nginx_conf_rel_path} /etc/nginx/
 
 sudo systemctl start nginx
