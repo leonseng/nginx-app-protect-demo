@@ -13,6 +13,11 @@ variable "base_ami" {
   description = "AWS machine image ID"
 }
 
+variable "ssh_public_key" {
+  type        = string
+  description = "SSH public key to be loaded onto the NGINX Plus EC2 instance"
+}
+
 #
 # NGINX Plus Repository SSL files
 #

@@ -1,6 +1,7 @@
 project_name              = "nap-waf"
 project_region            = "ap-southeast-2"
 base_ami                  = "ami-0aab712d6363da7f9" # ap-southeast-2 AWS Linux 2
+ssh_public_key            = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmUkU3ZaHsak4XoaiOFsR5I+f57/yMx0xViJw7ERCryrGsKBVp6o3manec6nw1FB2nOJPaPi2xf4bzq+Mt23OnZmQlumO/hPZx6RP/xBPPzoFW9hAGimN6JQX6jWc6rA/0iZKWZYcyrrm9YF31plyRuh48iCIm8RX04sFuXWAPrqkcU/h9XXM9lptcZgslqVqfrWIpahyor2sfHKSM5ATWqtA+OX62eaUAg7thbUazSsfK2EQcnqJuzAH84UAptkKczBPGJNgIfJVcUqnelM5NizsQgI4fW+RyRbIIpfxeirI7J9e1Ndr56jrZWLbIylo0TUcfeU5ioAnhqYJ7i771VJG7NpSN++kL1fsECDeSf9v3Kq3Uy5WWYiO0rY7Bvvmsa25PjmKD5oG1NJpx2R7WGotfzIeeOuwIa12TXefiT9PXyE9hakrjkU3Hdl3xJHQfgoGxYJWB82r3kh8fQv0+G4IDKVAdvutDD7cxkBwDMtnj33dtl07KEFwQtarJ+0c="
 nginx_plus_repo_cert_path = "/home/user/nginx-repo.crt"
 nginx_plus_repo_key_path  = "/home/user/nginx-repo.key"
 nginx_conf_repo_url       = "https://github.com/leonseng/nginx-app-protect-demo.git"

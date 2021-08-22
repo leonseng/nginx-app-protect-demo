@@ -2,6 +2,11 @@ provider "aws" {
   region = var.project_region
 }
 
+resource "aws_key_pair" "nplus_ssh_key" {
+  key_name_prefix = "${var.project_name}-"
+  public_key      = var.ssh_public_key
+}
+
 resource "aws_security_group" "allow_access" {
   description = "Allow inbound traffic"
   vpc_id      = aws_vpc.default.id
@@ -76,8 +81,8 @@ resource "aws_instance" "nplus" {
   ami                  = var.base_ami
   instance_type        = "t2.medium"
   iam_instance_profile = aws_iam_instance_profile.nplus_sm_profile.name
-
-  subnet_id = aws_subnet.my_subnet.id
+  key_name             = aws_key_pair.nplus_ssh_key.id
+  subnet_id            = aws_subnet.my_subnet.id
   vpc_security_group_ids = [
     "${aws_security_group.allow_access.id}"
   ]
