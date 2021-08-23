@@ -16,6 +16,7 @@ variable "base_ami" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key to be loaded onto the NGINX Plus EC2 instance"
+  default     = null
 }
 
 #

@@ -5,6 +5,7 @@ provider "aws" {
 resource "aws_key_pair" "nplus_ssh_key" {
   key_name_prefix = "${var.project_name}-"
   public_key      = var.ssh_public_key
+  count           = var.ssh_public_key == null ? 0 : 1
 }
 
 resource "aws_security_group" "allow_access" {
@@ -81,7 +82,7 @@ resource "aws_instance" "nplus" {
   ami                  = var.base_ami
   instance_type        = "t2.medium"
   iam_instance_profile = aws_iam_instance_profile.nplus_sm_profile.name
-  key_name             = aws_key_pair.nplus_ssh_key.id
+  key_name             = var.ssh_public_key == null ? null : aws_key_pair.nplus_ssh_key[0].id
   subnet_id            = aws_subnet.my_subnet.id
   vpc_security_group_ids = [
     "${aws_security_group.allow_access.id}"

@@ -26,3 +26,8 @@ Once the resources have been created, test the NGINX Plus server
 ```
 curl $(terraform output -raw nplus_public_ip)
 ```
+
+If `ssh_public_key` is provided as an input variable, you can SSH to the server via
+```
+ssh -o StrictHostKeyChecking=no ec2-user@$(terraform output -raw nplus_public_ip)
+```
