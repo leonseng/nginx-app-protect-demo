@@ -5,4 +5,4 @@ ssh_public_key            = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmUkU3ZaHsak4
 nginx_plus_repo_cert_path = "/home/user/nginx-repo.crt"
 nginx_plus_repo_key_path  = "/home/user/nginx-repo.key"
 nginx_conf_repo_url       = "https://github.com/leonseng/nginx-app-protect-demo.git"
-nginx_conf_relative_path  = "files/nginx"
+nginx_conf_relative_path  = "files/nginx/demo"
