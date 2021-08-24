@@ -2,7 +2,7 @@ resource "aws_vpc" "default" {
   cidr_block = "172.16.0.0/16"
 
   tags = {
-    Name = "${var.project_name}-vpc"
+    Name = "${local.instance_prefix}-vpc"
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.default.id
 
   tags = {
-    Name = "${var.project_name}-gw"
+    Name = "${local.instance_prefix}-gw"
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_subnet" "my_subnet" {
   cidr_block = "172.16.10.0/24"
 
   tags = {
-    Name = "${var.project_name}-sn"
+    Name = "${local.instance_prefix}-sn"
   }
 }
 

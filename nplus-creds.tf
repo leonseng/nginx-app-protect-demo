@@ -1,10 +1,6 @@
-resource "random_string" "random" {
-  length  = 16
-  special = false
-}
 
 resource "aws_secretsmanager_secret" "nplus_cert" {
-  name = "${var.project_name}-nplus-cert-${random_string.random.result}"
+  name = "${local.instance_prefix}-nplus-cert"
 }
 
 resource "aws_secretsmanager_secret_version" "nplus_cert_value" {
@@ -13,7 +9,7 @@ resource "aws_secretsmanager_secret_version" "nplus_cert_value" {
 }
 
 resource "aws_secretsmanager_secret" "nplus_key" {
-  name = "${var.project_name}-nplus-key-${random_string.random.result}"
+  name = "${local.instance_prefix}-nplus-key"
 }
 
 resource "aws_secretsmanager_secret_version" "nplus_key_value" {

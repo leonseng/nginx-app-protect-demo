@@ -2,8 +2,17 @@ provider "aws" {
   region = var.project_region
 }
 
+resource "random_string" "random" {
+  length  = 16
+  special = false
+}
+
+locals {
+  instance_prefix = "${var.project_name}-${random_string.random.result}"
+}
+
 resource "aws_key_pair" "nplus_ssh_key" {
-  key_name_prefix = "${var.project_name}-"
+  key_name_prefix = "${local.instance_prefix}-"
   public_key      = var.ssh_public_key
   count           = var.ssh_public_key == null ? 0 : 1
 }
@@ -74,7 +83,7 @@ resource "aws_security_group" "allow_access" {
   ]
 
   tags = {
-    Name = "${var.project_name}-sg"
+    Name = "${local.instance_prefix}-sg"
   }
 }
 
@@ -97,7 +106,7 @@ resource "aws_instance" "nplus" {
   })
 
   tags = {
-    Name = "${var.project_name}-instance"
+    Name = "${local.instance_prefix}-instance"
   }
 
   depends_on = [
@@ -113,6 +122,6 @@ resource "aws_eip" "nplus_eip" {
   depends_on = [aws_internet_gateway.gw]
 
   tags = {
-    Name = "${var.project_name}-eip"
+    Name = "${local.instance_prefix}-eip"
   }
 }
